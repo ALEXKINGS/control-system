@@ -1,11 +1,11 @@
 %/*************************************************************************************
-% *  File Name                               :    Intergral_Element.m
+% *  File Name                               :   Proportional_Element.m
 % 
 % *  Create Date                             :    2017/04/25
 % *  Author/Corporation                :   Twsa
 % *  Description                              :   mechanical control engineering:
 %                                                         The frequency characteristics of typical 
-%                                                         Bode Diagram And Nyquist  Diagram of Integral_Element  
+%                                                         Bode Diagram And Nyquist  Diagram of Proportional_Element  
 
 % *  Return Code                           :    None
 % 
@@ -21,8 +21,8 @@
 
 %Set struct params of system
 K=1;
-A1=1;
-A2=0;
+A1=0;
+A2=1;
 %calculate every params of open loop about this system
 %None
 
@@ -36,5 +36,18 @@ G1=tf(nG1,dG1)              %make transfer module
 %at this time,I have to draw the transfer function nyquist diagram
 %function I use:nyquist(num,den)£»
 [re1,im1]=nyquist(nG1,dG1);
-figure(1);
-plot(re1,im1,'r');
+figure(1);                            
+plot(re1,im1,'ro','LineWidth',5);              %paint nyquist
+title('Nyquist Diagram:Proportional element');
+legend('Twsa line');
+xlabel('real part ');
+ylabel('imaginary part');
+axis([0,2,0,2]);                                    %sets scaling for the x- and y-axeson the current plot
+grid on;
+
+%Add Bode diagram to Proportional-Element
+w=logspace(0,3,1000);                %at the space of logarithm,define frequency w
+figure(2);
+bode(nG1,dG1,w);                       %paint Bode diagram
+grid on;
+legend('Twsa Line');
