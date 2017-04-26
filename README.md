@@ -8,3 +8,5 @@ and then I find matlab can do it;
 2.Proportional element
 3.Intertial element
 4.Ideal Differentiation element
+5.First-Derivative-Element
+6.Second-Derivative-Element
